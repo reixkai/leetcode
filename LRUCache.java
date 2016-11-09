@@ -14,16 +14,16 @@ class CacheQueue {
 	private int currentSize;
 	private Node tail;
 	private Node head;
-	
+
 	CacheQueue(int capacity) {
 		this.capacity = capacity;
 		this.currentSize = 0;
 	}
 
 	/**
-	 * Moves a node that's already in the queue
-	 * @param node
-	 */
+	* Moves a node that's already in the queue
+	* @param node
+	*/
 	public void moveToEnd(Node node) {
 		if (node != null) {
 			if (this.head == null) { // new node
@@ -61,10 +61,10 @@ class CacheQueue {
 	}
 
 	/**
-	 * Removes first node (LRU) from the queue.
-	 * @return key of removed node.
-	 */
-    public int removeTop() {
+	* Removes first node (LRU) from the queue.
+	* @return key of removed node.
+	*/
+	public int removeTop() {
 		if (this.currentSize > 0) {
 			int key = this.head.getKey();
 			this.head = this.head.getNext();
@@ -80,9 +80,9 @@ class CacheQueue {
 	}
 
 	/**
-	 * Adds to the end of the queue
-	 * @param newNode
-	 */
+	* Adds to the end of the queue
+	* @param newNode
+	*/
 	public void add(Node newNode) {	
 		if (this.head == null) {
 			this.head = newNode;
@@ -95,11 +95,11 @@ class CacheQueue {
 		}
 		this.currentSize++;
 	}
-	
+
 	public Node getHead() {
 		return this.head;
 	}
-	
+
 	public Node getTail() {
 		return this.tail;
 	}
@@ -110,7 +110,7 @@ class Node {
 	private int value;
 	private Node next;
 	private Node prev;
-	
+
 	public Node(int key, int value) {
 		this.key = key;
 		this.value = value;
@@ -150,21 +150,21 @@ class Node {
 public class LRUCache {
 	private Map<Integer, Node> nodeMap;
 	private CacheQueue cacheQueue;
-	
+
 	public LRUCache(int capacity) {
 		this.nodeMap = new HashMap<Integer, Node>();
 		this.cacheQueue = new CacheQueue(capacity);
 	}
-	
+
 	public int get(int key) {
 		Node node = this.nodeMap.get(key);
 		if (node != null) {
-		    this.cacheQueue.moveToEnd(node);
+			this.cacheQueue.moveToEnd(node);
 			return node.getValue();
 		}
 		return -1;
 	}
-	
+
 	public void set(int key, int value) {
 		if (nodeMap.containsKey(key)) {
 			Node node = nodeMap.get(key);
