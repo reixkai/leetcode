@@ -24,7 +24,7 @@ public class Solution {
 		int newNum = num / 1000000000;
 		if (newNum > 0) {
 			num = num % 1000000000;
-			result.append(map.get(newNum)).append(" ").append("Billion");
+			result.append(map.get(newNum)).append(" Billion");
 		}
 
 		newNum = num / 1000000;
@@ -32,7 +32,7 @@ public class Solution {
 			if (result.length() != 0) {
 				result.append(" ");
 			}
-			result.append(convertHundred(newNum)).append(" ").append("Million");
+			result.append(convertHundred(newNum)).append(" Million");
 		}
 		num = num % 1000000;
 
@@ -41,7 +41,7 @@ public class Solution {
 			if (result.length() != 0) {
 				result.append(" ");
 			}
-			result.append(convertHundred(newNum)).append(" ").append("Thousand");
+			result.append(convertHundred(newNum)).append(" Thousand");
 		}
 
 		num = num % 1000;
@@ -62,7 +62,7 @@ public class Solution {
 			if (result.length() != 0) {
 				result.append(" ");
 			}
-			result.append(map.get(newNum)).append(" ").append("Hundred");
+			result.append(map.get(newNum)).append(" Hundred");
 		}
 		num = num % 100;
 
